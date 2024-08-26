@@ -1,11 +1,96 @@
 ---
-title: "rltTest"
+title: "How to connect a local repository to a remote repository that is located in a local directory"
 ---
 
-## Quarto
+## 1. Create a new R Project. I will be creating a package
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+-   Create this package with a git repository and open the project in a new R session
 
-```{r}
-1 + 1
+## 2. Create the local directory where the remote repository will be located
+
+-   You can do this manual by just creating a new folder, or from the command line using this code:
+
+```{bash}
+mkdir /Users/alex/Desktop/zdeleteGit
 ```
+
+-   Navigate to the command line in R within the new project you created if you are not already there
+
+-   Make sure you are in the correct working directory:
+
+```{bash}
+cd /Users/alex/Desktop/zdeleteGit
+```
+
+-   Initialize a bare git repository, which doesn't have a working directory, which is ideal for a remote repository:
+
+```{bash}
+git init --bare
+```
+
+## 3. Set up local repository
+
+-   Navigate to your local repository directory, which is where the R project is located:
+
+```{bash}
+cd /Users/alex/Desktop/rStudio/repositories/zdeleteGit
+```
+
+## 4. Add the remote repository
+
+```{bash}
+git remote add origin /Users/alex/Desktop/zdeleteGit
+```
+
+## 5. Add files and commit changes
+
+```{bash}
+git add .
+```
+
+```{bash}
+git commit -m "Initial commit"
+```
+
+## 6. Push to the remote repository
+
+```{bash}
+git push -u origin main
+```
+
+## 7. Verify the push
+
+-   If you open the bare remote repository you will see a bunch of metadata files and not the files that are in your R project
+
+    ![](images/Screenshot 2024-08-26 at 2.21.15 PM.png)
+
+-   We can verify the push was successful by cloning this bare repository
+
+-   Navigate back to the command line in R
+
+-   Set the working directory to the repository you are going to clone:
+
+    ```{bash}
+    cd /Users/alex/Desktop
+    ```
+
+-   Use git clone
+
+    ```{bash}
+    git clone /Users/alex/Desktop/zdeleteGit zdeleteGit-clone
+    ```
+
+-   You can now verify one of two ways:
+
+-   1\. Navigate to the cloned directory and check the files:
+
+    ```{bash}
+    cd zdeleteGit-clone
+    ls -la
+    ```
+
+-   2\. Manually search for the git clone file on your computer
+
+![](images/Screenshot 2024-08-26 at 2.26.35 PM.png)
+
+-   You can now see your project files and should be able to push and pull like normal
