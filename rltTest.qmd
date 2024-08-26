@@ -8,7 +8,7 @@ title: "How to connect a local repository to a remote repository that is located
 
 ## 2. Create the local directory where the remote repository will be located
 
--   You can do this manual by just creating a new folder, or from the command line using this code:
+-   You can do this manually by just creating a new folder, or from the command line using this code:
 
 ```{bash}
 mkdir /Users/alex/Desktop/zdeleteGit
@@ -62,7 +62,7 @@ git push -u origin main
 
 -   If you open the bare remote repository you will see a bunch of metadata files and not the files that are in your R project
 
-    ![](images/Screenshot 2024-08-26 at 2.21.15 PM.png)
+    ![](images/Screenshot%202024-08-26%20at%202.21.15%20PM.png)
 
 -   We can verify the push was successful by cloning this bare repository
 
@@ -91,6 +91,6 @@ git push -u origin main
 
 -   2\. Manually search for the git clone file on your computer
 
-![](images/Screenshot 2024-08-26 at 2.26.35 PM.png)
+![](images/Screenshot%202024-08-26%20at%202.26.35%20PM.png)
 
 -   You can now see your project files and should be able to push and pull like normal
